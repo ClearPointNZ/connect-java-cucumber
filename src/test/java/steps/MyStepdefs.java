@@ -10,6 +10,7 @@ import cd.connect.service.ApiService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.ws.rs.core.Response;
 import java.math.BigDecimal;
 
 import static org.fest.assertions.api.Assertions.assertThat;
@@ -17,16 +18,16 @@ import static org.fest.assertions.api.Assertions.assertThat;
 
 public class MyStepdefs {
 
-//	private static Logger logger = LoggerFactory.getLogger(MyStepdefs.class);
 
 	private ApiService apiService;
 
 	Messagelist messagelist;
 
+	Response slackList;
+
 	public MyStepdefs(ApiService apiService) {
 		this.apiService = apiService;
 	}
-
 
 
 	@Given("^I call get messages api for user id (.*) from date (.*) to date (.*)$")
@@ -40,11 +41,19 @@ public class MyStepdefs {
 		assertThat(messagelist).isNotEmpty();
 	}
 
-	@Given("^a (.*) is sent through slack api$")
+	@Given("^a message is sent to a slack channel$")
 	public void aMessageIsSentThroughSlackApi() throws Throwable {
 
+		slackList = apiService.slackApi();
+		System.out.println(slackList.toString());
 
+	}
 
+	@Then("^a valid response is received with (.*)$")
+	public void theResponseShouldContainMessage(int status) throws Throwable {
+
+		assertThat(slackList.toString()).contains("ok");
+		assertThat(slackList.getStatus()).isEqualTo(status);
 
 	}
 }

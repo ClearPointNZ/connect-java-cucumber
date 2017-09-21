@@ -4,11 +4,10 @@ Feature: Testing listener service
          SO THAT messages from those events can be analysed
 
 
-  Scenario Outline: Get messages sent through slack channel
-	Given a <message> is sent through slack api
-    When listener api is called
-	Then the response should contain <message> that is sent through slack api
+  Scenario Outline: Get valid response when a message is sent to a slack channel
+    Given a message is sent to a slack channel
+    Then a valid response is received with <status>
 
     Examples:
-    |message           |
-    |Hello Connect     |
+      | status |
+      | 200    |
