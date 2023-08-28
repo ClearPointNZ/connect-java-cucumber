@@ -1,0 +1,24 @@
+== Description
+
+Sample test project to demonstrate API testing with Java, Cucumber and OpenAPI
+
+== Installation Instructions
+
+Prerequisites:
+
+* Java 1.8
+
+* Maven > 3.3.9
+
+Compile with Maven:
+
+run from project root: `mvn clean compile`
+
+Run tests:
+
+run `mvn test`
+
+Recommendation: If using IntelliJ to run tests, mark generated-sources/api/src/gen/java directory as Sources Root
+
+== Documentation
+Check out our link:https://clearpoint.digital/insights/introduction-to-microservice-test-automation-with-cucumber-jvm-and-openapi[blog post] introducing microservice test automation using Cucumber JVM and OpenAPI

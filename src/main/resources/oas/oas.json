@@ -1,0 +1,187 @@
+{"swagger": "2.0",
+  "info": {
+    "version": "",
+    "title": "Example",
+    "description": "example api"
+  },
+  "basePath": "/latest",
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/books/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "get": {
+        "operationId": "getBook",
+        "summary": "Get Book",
+        "tags": [
+          "Books"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/book-input"
+            },
+            "examples": {
+              "application/json": {
+                "id": "01234567",
+                "name": "Peter Pan"
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "updateBook",
+        "summary": "Update Book",
+        "tags": [
+          "Books"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/book-input"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/book-input"
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteBook",
+        "summary": "Delete Book",
+        "tags": [
+          "Books"
+        ],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/books": {
+      "get": {
+        "operationId": "listBooks",
+        "summary": "List Books",
+        "tags": [
+          "Books"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/book-list"
+            },
+            "examples": {
+              "application/json": {
+                "books": [
+                  {
+                    "id": "Ut id",
+                    "name": "dolore amet qui id labore"
+                  },
+                  {
+                    "id": "cupidatat consectetur enim in",
+                    "name": "sit repr"
+                  },
+                  {
+                    "id": "labore quis proident",
+                    "name": "quis labore minim"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "postBook",
+        "summary": "Create Book",
+        "tags": [
+          "Books"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/book-input"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/book-input"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "book-input": {
+      "title": "Book Input",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "book-list": {
+      "title": "Book List",
+      "type": "object",
+      "properties": {
+        "books": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/book-input"
+          }
+        }
+      },
+      "example": {
+        "books": [
+          {
+            "id": "labore aute esse do officia",
+            "name": "velit"
+          },
+          {
+            "id": "in irure qui mollit velit",
+            "name": "tempor fugiat"
+          },
+          {
+            "id": "ad ut consectetur occaecat",
+            "name": "consequat"
+          }
+        ]
+      }
+    }
+  }
+}
